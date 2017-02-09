@@ -1,0 +1,21 @@
+<StackLayout #container>
+  
+  <label text="會員登入" stretch="none" horizontalAlignment="center"></label>
+
+  <TextField #email hint="身分證號" [(ngModel)]="user.id"
+    autocorrect="false" autocapitalizationType="none"></TextField>
+  <TextField #password hint="會員密碼" secure="true" [(ngModel)]="user.password"></TextField>
+
+  <WrapLayout horizontalAlignment="center">
+    <Button text="加入會員" class="join-button" (tap)="join()">
+      <!--<Image  src="res://crown" stretch ="none" horizontalAlignment="center"></Image>-->
+    </Button>
+    <Button text="忘記密碼" class="join-button" (tap)="toggleDisplay()"></Button>
+  </WrapLayout>
+
+  <WrapLayout horizontalAlignment="center">
+    <Button text="確定" class="submit-button" (tap)="login()"></Button>
+    <Button text="取消" class="submit-button" (tap)="disable()"></Button>
+  </WrapLayout>
+
+</StackLayout>
