@@ -1,20 +1,22 @@
-@import url("~/platform.css");
 
-Page {
+StackLayout {
+  margin-left: 30;
+  margin-right: 30;
+  padding-bottom: 15;
   background-color: white;
-  font-size: 15;
 }
-ActionBar {
-  background-color: black;
-  color: white;
+Image {
+  margin-top: 5;
+  margin-bottom: 20;
 }
-TextField {
-  padding: 10;
-  font-size: 13;
+
+
+button:highlighted { 
+    background-color: #f49fab; 
 }
-.small-spacing {
-  margin: 5;
-}
-.medium-spacing {
-  margin: 10;
+
+ActionBar{
+    background-color:  #3C5AFD;
+    color: white;
+
 }

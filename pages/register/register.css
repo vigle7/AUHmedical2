@@ -1,0 +1,18 @@
+FlexboxLayout{
+	padding-top: 50
+}
+
+Label{
+	width:20%;
+	font-size: 18;
+
+}
+
+TextField{
+	width: 70%
+
+}
+
+button{
+	font-size: 22;
+}

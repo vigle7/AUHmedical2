@@ -1,57 +1,45 @@
-import { Component } from "@angular/core";
-import { setStatusBarColors } from "./utils/status-bar-util";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
+import { Color } from "color";
 
-import firebase = require("nativescript-plugin-firebase");
+import { TextField } from "ui/text-field";
+import { View } from "ui/core/view";
 
 @Component({
-  selector: "main",
-  template: "<page-router-outlet></page-router-outlet>"
+  selector: "my-app",
+  templateUrl: "app.html",
+    styles: [
+  `
+  .submit-button {
+    background-color: #CB1D00;
+    color: white;
+    margin-top: 20;
+  }
+
+  .btn{
+      background-color: #F07788;
+      color:whitesmoke;border-radius: 10;
+      border-width: 2;
+      border-color: #f6adb7;
+      height:"50px";
+  }
+  `
+  ]
 })
-export class AppComponent {
-  constructor() {
-    setStatusBarColors();
-
-          firebase.login({
-              type: firebase.LoginType.ANONYMOUS
-          }).then((user) => {
+export class AppComponent implements OnInit {
 
 
-
-              firebase.getAuthToken({
-                // default false, not recommended to set to true by Firebase but exposed for {N} devs nonetheless :)
-                forceRefresh: false
-              }).then(
-                  function (token) {
-
-
-
-
-
-                          firebase.addOnPushTokenReceivedCallback(
-                            function(tokenreal) {
-                                    console.log("real token retrieval: " + tokenreal);
-                            }
-                          );
-
-
-
-
-
-                    console.log("Auth token retrieved: " + token);
-                  },
-                  function (errorMessage) {
-                    console.log("Auth token retrieval error: " + errorMessage);
-                  }
-              );
-
-
-
-
-              alert("User uid: " + user.uid);
-          }, (error) => {
-              alert("Trouble in paradise: " + error);
-          });
-
+  constructor(private router: Router) {
 
   }
+
+  ngOnInit() {
+    //this.page.actionBarHidden = true;
+    //this.page.backgroundImage = this.page.ios ? "res://homebg_ldpi_asia.png" : "res://homebg_ldpi_asia.png";
+  }
+
+  onTap(){
+    this.router.navigate(["/login"]);
+  }
+
 }

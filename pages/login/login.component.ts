@@ -5,31 +5,27 @@ import { Page } from "ui/page";
 import { TextField } from "ui/text-field";
 import { View } from "ui/core/view";
 
-import { User } from "../../shared/user/user";
-import { UserService } from "../../shared/user/user.service";
-import { setHintColor } from "../../utils/hint-util";
+
 
 @Component({
-  selector: "my-app",
-  providers: [UserService],
+  selector: "login",
+
   templateUrl: "pages/login/login.html",
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"],
 })
 export class LoginComponent implements OnInit {
-  user: User;
 
 
-  @ViewChild("container") container: ElementRef;
-  @ViewChild("id") id: ElementRef;
-  @ViewChild("password") password: ElementRef;
 
-  constructor(private router: Router, private userService: UserService, private page: Page) {
-    this.user = new User();
+
+
+  constructor(private router: Router,  private page: Page) {
+
   }
 
   ngOnInit() {
-    this.page.actionBarHidden = true;
-    this.page.backgroundImage = this.page.ios ? "res://bluebg.jpg" : "res://bluebg";
+    //this.page.actionBarHidden = true;
+    //this.page.backgroundImage = this.page.ios ? "res://homebg_ldpi_asia.png" : "res://homebg_ldpi_asia.png";
   }
 
   join() {
@@ -38,11 +34,7 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    this.userService.login(this.user)
-      .subscribe(
-        () => this.router.navigate(["/list"]),
-        (error) => alert("Unfortunately we could not find your account.")
-      );
+
   }
   
   disable(){

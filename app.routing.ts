@@ -1,19 +1,19 @@
-import { EntryComponent } from "./pages/entry/entry.component";
-import { ListComponent } from "./pages/list/list.component";
+import { AppComponent } from "./app.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { JoinComponent } from "./pages/join/join.component";
+import { RegisterComponent } from "./pages/register/register.component";
 
 export const routes = [
-  { path: "", component: EntryComponent },
-  { path: "list", component: ListComponent },
+  { path: "", component: AppComponent },
   { path: "login", component: LoginComponent },
-  { path: "entry", component: EntryComponent },
+  { path: "app", component: AppComponent },
   { path: "join", component: JoinComponent },
+  { path: "register", component: RegisterComponent },
 ];
 
 export const navigatableComponents = [
-  EntryComponent,
-  ListComponent,
+  AppComponent,
   LoginComponent,
-  JoinComponent
+  JoinComponent,
+  RegisterComponent
 ];

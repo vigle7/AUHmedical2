@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "425294351645",
+    "firebase_url": "https://auhmedical2-2fcf0.firebaseio.com",
+    "project_id": "auhmedical2-2fcf0",
+    "storage_bucket": "auhmedical2-2fcf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425294351645:android:b34845489c247652",
+        "android_client_info": {
+          "package_name": "org.nativescript.AUHmedical2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425294351645-19n6li0o5ede17vic60ijnrh305smpl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOKlsLt1WS3oPvS09u_pIfsIMu8zVfnxU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

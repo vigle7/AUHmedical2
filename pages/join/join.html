@@ -1,14 +1,32 @@
 
+<ScrollView flexGrow="1" id="scrollview">
+  <FlexboxLayout  width="100%" flexDirection="column">
 
-<StackLayout >
-
-  <StackLayout  width="100%">
-
-<Image src="res://homebg_ldpi_asia" stretch ="none" horizontalAlignment="center"></Image>
- </StackLayout>
-
-
-</StackLayout>
+    <FlexboxLayout>
+        <Label height="5%" style="text-align:center;background-color: aquamarine;" width="100%" text="簽暑同意書"></Label>
+    </FlexboxLayout >
 
 
 
+    <FlexboxLayout>
+      <Image src="res://app_agreement" stretch ="fill"></Image>
+    </FlexboxLayout >
+
+
+
+
+
+    <FlexboxLayout style="flex-direction: row;background-color:antiquewhite ;">
+      <CheckBox width="7%" #CB checked="false"></CheckBox>
+      <Label width="93%" style="text-align:left;"  textWrap="true" 
+             text="本人已詳閱，知悉上述告知事項，並同意貴院得依該告知內容，就本人於本同意書簽定之前及之後所提供之個人資料為蒐集、處理、利用及國際傳輸，本人並瞭解此同意符合個人資料保護法及相關法規之要求，具有書面同意貴院蒐集、處理及利用本人個人資料之效力。"></Label>
+    </FlexboxLayout >
+
+    <FlexboxLayout style="justify-content:center;">
+        <Button text="同意" width="48%" backgroundColor="cornflowerblue" color="white" (tap)="agree()"></Button>
+
+        <Button text="取消" width="48%" backgroundColor="darkgray" color="white" (tap)="cancel()"></Button>
+    </FlexboxLayout>
+
+ </FlexboxLayout >
+</ScrollView>

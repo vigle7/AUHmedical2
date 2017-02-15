@@ -5,6 +5,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
+import { RegisterComponent } from "./pages/register/register.component";
 import { routes, navigatableComponents } from "./app.routing";
 
 @NgModule({
@@ -16,7 +17,7 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptRouterModule.forRoot(routes)
   ],
   declarations: [
-    AppComponent,
+  AppComponent,
     ...navigatableComponents,
   ],
   bootstrap: [AppComponent],
