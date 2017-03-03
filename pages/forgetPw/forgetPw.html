@@ -1,0 +1,31 @@
+  <FlexboxLayout  width="100%" flexDirection="column" style="align-items: center;padding-top: 40;" 
+                [visibility]="!isDatePickerVisible ? 'visible' : 'collapsed'" >
+
+    <FlexboxLayout >
+    <Label col="0"  class="label" text="*帳號：" ></Label>
+    <TextField #id col="1" id="firstTextFieldId" [(ngModel)]="user.ambno" class="input input-border"
+        hint="身分證" ></TextField>
+    </FlexboxLayout >
+
+
+    <FlexboxLayout>
+    <Label col="0"  class="label" text="*生日：" ></Label>
+    <TextField col="1" [text]='user.ambbgndt | date:"MM/dd/yyyy"' class="input input-border" id="textFieldBDate"
+        hint="生日" (tap)="showDatePicker()"></TextField>
+
+    </FlexboxLayout >
+
+    <FlexboxLayout>
+    <Label col="0"  class="label" text="*信箱：" ></Label>
+        <TextField col="1" [(ngModel)]="user.ambemail" class="input input-border"
+        hint="電子信箱" returnKeyType="done" (returnPress)="register()">
+        </TextField>
+    </FlexboxLayout >
+
+    <FlexboxLayout>
+        <Button text="確定" width="48%" height="12%" backgroundColor="cornflowerblue" color="white" (tap)="confirm()"></Button>
+
+        <Button text="取消" width="48%" height="12%" backgroundColor="darkgray" color="white" [nsRouterLink]="['/login']"></Button>
+    </FlexboxLayout >
+
+</FlexboxLayout >

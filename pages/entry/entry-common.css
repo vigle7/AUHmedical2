@@ -1,0 +1,32 @@
+button{
+	height:100;
+		margin-top: 20;
+	margin-bottom: 20;
+	color: white;
+}
+
+
+
+.flexboxLayout-inside{
+	width:80%;
+
+	flex-direction:column;
+	justify-content:center;
+
+
+}
+
+ScrollView{
+	background-color: #f7fdff;
+}
+
+/*.flexboxLayout-outside {
+		justify-content:center;
+    background-image: ~/images/homebg_ldpi_asia.png;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+	justify-content:center;
+    	background-color: #f7fdff;
+}*/

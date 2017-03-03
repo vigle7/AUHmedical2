@@ -1,0 +1,66 @@
+<ActionBar title="亞大附醫"></ActionBar>
+
+
+
+  <ScrollView>
+
+  <GridLayout rows="*,*,*" columns="*" horizontalAlignment="center" >
+
+      <WrapLayout height="100" backgroundColor="#FFE9CC" row="0" col="0">
+        <Label text="This is Label in Tab 1"></Label>
+      </WrapLayout>
+      <WrapLayout backgroundColor="#CCE2FF" row="1" col="0"> 
+
+
+
+    <Button color="#FFF8F0"; style="background-color: #fcae5a;width:33%;height:160" (tap)="showButton1 = !showButton1" >
+      
+            <FormattedString>
+                <Span text="&#xf067;" fontSize=100 fontFamily="fontawesome-webfont"></Span>
+                <Span text="&#13;&#10;行動掛號" fontSize=20></Span>
+            </FormattedString>
+    </Button>
+
+    <Button color="#FFF8F0"; style="background-color: #F5A2CD;width:33%;height:160" (tap)="showButton1 = !showButton1" >
+      
+            <FormattedString>
+                <Span text="&#xf271;" fontSize=100 fontFamily="fontawesome-webfont"></Span>
+
+                <Span text="&#13;&#10;預約查詢" fontSize=20></Span>
+            </FormattedString>
+    </Button>
+
+    <Button color="#FFF8F0"; style="background-color: #02DBC2;width:33%;height:160" (tap)="showButton1 = !showButton1" >
+      
+            <FormattedString>
+                <Span text="&#xf274;" fontSize=100 fontFamily="fontawesome-webfont"></Span>
+                <Span text="&#13;&#10;進度查詢" fontSize=20></Span>
+            </FormattedString>
+    </Button>
+
+        <Button [visibility]="showButton1 ? 'visible' : 'collapse'"  text="依科別掛號" style="width:33%;height:20%"></Button>
+        <Button [visibility]="showButton1 ? 'visible' : 'collapse'" text="依醫師掛號" style="width:33%;height:20%"></Button>
+        <Button [visibility]="showButton1 ? 'visible' : 'collapse'" text="依歷史記錄掛號" style="width:33%;height:20%"></Button>
+
+
+
+
+
+
+
+
+
+
+
+
+      <Button text="&#xf219;  會員登入" class="fontawesome-icon" [nsRouterLink]="['/login']" style="background-color: #eda39e;width:33%;height:20%"></Button>
+          <Button text="&#xf219;  會員登入" class="fontawesome-icon" [nsRouterLink]="['/login']" style="background-color: #eda39e;width:33%;height:20%"></Button>
+      <Button text="&#xf219;  會員登入" class="fontawesome-icon" [nsRouterLink]="['/login']" style="background-color: #eda39e;width:33%;height:20%"></Button>
+          <Button text="&#xf219;  會員登入" class="fontawesome-icon" [nsRouterLink]="['/login']" style="background-color: #eda39e;width:33%;height:20%"></Button>
+      </WrapLayout>
+
+
+
+  </GridLayout>
+  </ScrollView>
+

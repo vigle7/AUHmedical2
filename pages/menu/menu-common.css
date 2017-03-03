@@ -1,0 +1,39 @@
+StackLayout {
+  margin-left: 30;
+  margin-right: 30;
+  padding-bottom: 15;
+  background-color: white;
+  width: 90%;
+  border-radius: 10;
+}
+Image {
+  margin-top: 5;
+  margin-bottom: 20;
+}
+Label{
+  padding-top: 20;
+  margin-bottom: 20;
+}
+
+TextField {
+  margin-left: 30;
+  margin-right: 30;
+  margin-bottom: 10;
+  width:80%;
+}
+
+
+.submit-button {
+  width:80%;
+  height: 80;
+  background-color:#ff9f9f;
+  color: white;
+  margin-top: 20;
+}
+
+.join-button {
+  width:40%;
+  height: 80;
+  background-color:#7ebeff;
+  color: white;
+}

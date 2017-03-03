@@ -12,11 +12,11 @@ import {registerElement} from "nativescript-angular/element-registry";
 registerElement("CheckBox", () => require("nativescript-checkbox").CheckBox);
 
 @Component({
-  selector: "join",
-  templateUrl: "pages/join/join.html",
-  styleUrls: ["pages/join/join-common.css"],
+  selector: "consent",
+  templateUrl: "pages/consent/consent.html",
+  styleUrls: ["pages/consent/consent-common.css"],
 })
-export class JoinComponent implements OnInit {
+export class ConsentComponent implements OnInit {
 
 
 
@@ -45,9 +45,6 @@ export class JoinComponent implements OnInit {
 
     }
 
-
-
-
   agree(){
 
 	    if(!this.signatureCheckBox.nativeElement.checked){
@@ -55,11 +52,7 @@ export class JoinComponent implements OnInit {
 	    	return
 	    }
 
-	    this.router.navigate(["/register"]);
-	}
-
-  cancel(){
-    this.router.navigate(["/login"]);
+	    this.router.navigate(["/signUp"]);
 	}
 
 }

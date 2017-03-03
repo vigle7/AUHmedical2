@@ -1,0 +1,37 @@
+<!-- <StackLayout class="modal-view-style" sdkExampleTitle sdkToggleNavButton>
+    <DatePicker id="datePicker"></DatePicker>
+    <Button class="btn btn-primary btn-active" text="Submit" (tap)="submit()"></Button>
+</StackLayout>
+
+ -->
+
+<ScrollView>
+  <FlexboxLayout>
+
+
+	        <Button text="依科別掛號" (tap)="submit('依科別掛號')"></Button>
+	        <Button text="依醫師掛號" (tap)="submit('依醫師掛號')"></Button>
+	        <Button text="依歷史記錄掛號" (tap)="submit('依歷史記錄掛號')"></Button>
+
+
+            <Button text="取消" style="color:#76B3E8;background-color: white;border-width: 10;border-color: #bad9f3" [nsRouterLink]="['/entry']"></Button>
+ 
+  </FlexboxLayout>
+</ScrollView>
+
+<!-- <ScrollView sdkExampleTitle sdkToggleNavButton >
+<ListView itemTap="submit('依科別掛號')"><Label text="依科別掛號"></Label></ListView>
+<ListView itemTap="submit('依醫師掛號')"><Label text="依醫師掛號"/></Label></ListView>
+<ListView itemTap="submit('依歷史記錄掛號')"><Label text="依歷史記錄掛號"/></Label></ListView>
+</ScrollView> -->
+
+
+
+<!-- <ListView [items]="myItems" (itemTap)="submit($event)">
+    <template let-item="item" let-i="index">
+        <StackLayout >
+            <Label [text]='item'></Label>
+
+        </StackLayout>
+    </template>
+</ListView> -->

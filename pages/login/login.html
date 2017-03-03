@@ -1,21 +1,44 @@
-<StackLayout #container>
-  
-  <label text="會員登入" stretch="none" horizontalAlignment="center"></label>
+<ActionBar title="登入會員"></ActionBar>
+  <ScrollView>
 
-  <TextField #email hint="身分證號" 
-    autocorrect="false" autocapitalizationType="none"></TextField>
-  <TextField #password hint="會員密碼" secure="true" ></TextField>
 
-  <WrapLayout horizontalAlignment="center">
-    <Button text="加入會員" class="join-button" [nsRouterLink]="['/join']">
-      <!--<Image  src="res://crown" stretch ="none" horizontalAlignment="center"></Image>-->
-    </Button>
-    <Button text="忘記密碼" class="join-button" (tap)="toggleDisplay()"></Button>
-  </WrapLayout>
+    <GridLayout rows="*" columns="*" horizontalAlignment="center" verticalAlignment="center">
 
-  <WrapLayout horizontalAlignment="center">
-    <Button text="確定" class="submit-button" (tap)="login()"></Button>
-    <Button text="取消" class="submit-button" (tap)="disable()"></Button>
-  </WrapLayout>
+      <StackLayout  [visibility]="showLogin ? 'visible' : 'collapse'" row="0" column="0">
 
-</StackLayout>
+        <StackLayout verticalAlignment="center">
+          
+        <!--   <label text="會員登入" stretch="none" horizontalAlignment="center"></label> -->
+
+          <TextField hint="身分證號" style="margin-top: 50" [(ngModel)]='id'></TextField>
+          <TextField hint="會員密碼" secure="true" style="margin-top: 25" returnKeyType="done" (returnPress)="login()" [(ngModel)]='password'></TextField>
+
+          <WrapLayout horizontalAlignment="center" style="margin-top: 50">
+            <Button text="加入會員" class="join-button" [nsRouterLink]="['/consent']">
+              <!--<Image  src="res://crown" stretch ="none" horizontalAlignment="center"></Image>-->
+            </Button>
+            <Button text="忘記密碼" class="join-button" [nsRouterLink]="['/forgetPw']"></Button>
+          </WrapLayout>
+
+          <WrapLayout horizontalAlignment="center" width="80%">
+            <FlexboxLayout>
+              <CheckBox #CB checked="false" style="margin-right: 3%"></CheckBox>
+              <Label text="記住帳號密碼"></Label>
+            </FlexboxLayout >
+          </WrapLayout>
+
+
+          <WrapLayout horizontalAlignment="center">
+            <Button text="登入" class="submit-button" (tap)="login()"></Button>
+            <Button text="取消" class="submit-button" [nsRouterLink]="['/entry']"></Button>
+          </WrapLayout>
+
+        </StackLayout>
+
+      </StackLayout>
+
+      <ActivityIndicator width="100" height="100" [visibility]="!showLogin ? 'visible' : 'collapse'" [busy]='!showLogin' row="0" column="0"></ActivityIndicator>
+
+    </GridLayout>
+    
+  </ScrollView>

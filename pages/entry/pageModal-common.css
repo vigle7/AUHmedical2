@@ -1,0 +1,15 @@
+button{
+
+	height:100;
+	margin-top: 20;
+	margin-bottom: 20;
+	color: white;
+
+}
+
+FlexboxLayout{
+	  width: 80%;
+	flex-direction:column;
+	justify-content:center;
+}
+

@@ -1,19 +1,33 @@
 import { AppComponent } from "./app.component";
+import { EntryComponent } from "./pages/entry/entry.component";
+import { ModalViewComponent } from "./pages/entry/pageModal";
 import { LoginComponent } from "./pages/login/login.component";
-import { JoinComponent } from "./pages/join/join.component";
-import { RegisterComponent } from "./pages/register/register.component";
+import { ConsentComponent } from "./pages/consent/consent.component";
+import { SignUpComponent } from "./pages/signUp/signUp.component";
+import { DatePickerComponent } from "./pages/datePicker/datePicker.component";
+import { ForgetPwComponent } from "./pages/forgetPw/forgetPw.component";
+import { MenuComponent } from "./pages/menu/menu.component";
 
 export const routes = [
-  { path: "", component: AppComponent },
+  { path: "", component: EntryComponent },
+  { path: "entry", component: EntryComponent },
+  { path: "pageModal", component: ModalViewComponent },
   { path: "login", component: LoginComponent },
   { path: "app", component: AppComponent },
-  { path: "join", component: JoinComponent },
-  { path: "register", component: RegisterComponent },
+  { path: "consent", component: ConsentComponent },
+  { path: "signUp", component: SignUpComponent },
+  { path: "datePicker", component: DatePickerComponent },
+  { path: "forgetPw", component: ForgetPwComponent },
+  { path: "menu", component: MenuComponent },
 ];
 
 export const navigatableComponents = [
-  AppComponent,
+  EntryComponent,
+  ModalViewComponent,
   LoginComponent,
-  JoinComponent,
-  RegisterComponent
+  ConsentComponent,
+  SignUpComponent,
+  DatePickerComponent,
+  ForgetPwComponent,
+  MenuComponent,
 ];

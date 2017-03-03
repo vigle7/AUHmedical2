@@ -1,0 +1,83 @@
+<ActionBar title="申請會員"></ActionBar>
+
+<ScrollView>
+
+    <GridLayout rows="*" columns="*" horizontalAlignment="center" verticalAlignment="center">
+
+      <StackLayout  [visibility]="showLogin ? 'visible' : 'collapse'" row="0" column="0">
+
+        <GridLayout rows="*,*,*,*,*" columns="*" horizontalAlignment="center" verticalAlignment="center">
+
+            <WrapLayout row="0" col="0" style="margin-top: 50;">
+                <Label text="*帳號：" horizontalAlignment="right"  verticalAlignment="center"></Label>
+                <TextField id="firstTextFieldId" horizontalAlignment="left"  [(ngModel)]="user.ambno" verticalAlignment="center" hint="身分證" ></TextField>
+            </WrapLayout>
+
+            <WrapLayout row="1" col="0" style="margin-top:50">
+                <Label   text="*姓名：" horizontalAlignment="right" verticalAlignment="center"></Label>
+                <TextField  [(ngModel)]="user.ambaddr" horizontalAlignment="left" verticalAlignment="center" hint="姓名" ></TextField>
+            </WrapLayout>
+
+            <WrapLayout row="2" col="0" style="margin-top:50">
+                <Label   text="*生日：" horizontalAlignment="right" verticalAlignment="center"></Label>
+                <TextField  [text]='user.ambbgndt | date:"MM/dd/yyyy"'  horizontalAlignment="left" 
+                            verticalAlignment="center" hint="生日" id="textFieldBDate" (tap)="showDatePicker()"></TextField>
+            </WrapLayout>
+
+            <WrapLayout row="3" col="0" style="margin-top:50">
+                <Label   text="*信箱：" horizontalAlignment="right" verticalAlignment="center"></Label>
+                <TextField  [(ngModel)]="user.ambemail" horizontalAlignment="left" verticalAlignment="center" hint="電子信箱" 
+                            returnKeyType="done" (returnPress)="signUp()"></TextField>
+            </WrapLayout>
+
+            <WrapLayout row="4" col="0" horizontalAlignment="center" style="margin-top:50">
+                <Button text="申請" width="45%" color="white" (tap)="signUp()"></Button>
+                <Button text="取消" width="45%" backgroundColor="darkgray" color="white" [nsRouterLink]="['/login']"></Button>
+            </WrapLayout>
+
+        </GridLayout>
+      </StackLayout>
+
+      <ActivityIndicator width="100" height="100" [visibility]="!showLogin ? 'visible' : 'collapse'" [busy]='!showLogin' row="0" column="0"></ActivityIndicator>
+
+    </GridLayout>
+</ScrollView>
+
+<!--   <ScrollView>
+      <FlexboxLayout  flexDirection="column" style="align-items: center;padding-top: 40;" 
+                    [visibility]="!isDatePickerVisible ? 'visible' : 'collapsed'" >
+
+        <FlexboxLayout >
+        <Label col="0"  class="label" text="*帳號：" ></Label>
+        <TextField #firstTextFieldId col="1" [(ngModel)]="user.ambno" class="input input-border"
+            hint="身分證" ></TextField>
+        </FlexboxLayout >
+
+        <FlexboxLayout>
+        <Label col="0"  class="label" text="*姓名：" ></Label>
+        <TextField col="1"  [text]="user.ambaddr" class="input input-border"
+            hint="姓名" ></TextField>
+        </FlexboxLayout >
+
+        <FlexboxLayout>
+        <Label col="0"  class="label" text="*生日：" ></Label>
+        <TextField col="1" [text]='user.ambbgndt | date:"MM/dd/yyyy"' class="input input-border" id="textFieldBDate"
+            hint="生日" (tap)="showDatePicker()"></TextField>
+
+        </FlexboxLayout >
+
+        <FlexboxLayout>
+        <Label col="0"  class="label" text="*信箱：" ></Label>
+            <TextField col="1" [(ngModel)]="user.ambemail" class="input input-border"
+            hint="電子信箱" returnKeyType="done" (returnPress)="signUp()">
+            </TextField>
+        </FlexboxLayout >
+
+        <FlexboxLayout>
+            <Button text="申請" width="48%" height="12%" backgroundColor="cornflowerblue" color="white" (tap)="signUp()"></Button>
+
+            <Button text="取消" width="48%" height="12%" backgroundColor="darkgray" color="white" [nsRouterLink]="['/login']"></Button>
+        </FlexboxLayout >
+
+      </FlexboxLayout >
+  </ScrollView> -->

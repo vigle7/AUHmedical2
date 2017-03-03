@@ -1,5 +1,5 @@
 
-<ScrollView flexGrow="1" id="scrollview">
+<ScrollView>
   <FlexboxLayout  width="100%" flexDirection="column">
 
     <FlexboxLayout>
@@ -23,9 +23,9 @@
     </FlexboxLayout >
 
     <FlexboxLayout style="justify-content:center;">
-        <Button text="同意" width="48%" backgroundColor="cornflowerblue" color="white" (tap)="agree()"></Button>
+        <Button text="同意" width="48%" color="white" (tap)="agree()"></Button>
 
-        <Button text="取消" width="48%" backgroundColor="darkgray" color="white" (tap)="cancel()"></Button>
+        <Button text="取消" width="48%" backgroundColor="darkgray" color="white" [nsRouterLink]="['/login']"></Button>
     </FlexboxLayout>
 
  </FlexboxLayout >

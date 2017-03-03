@@ -9,8 +9,13 @@ export class User {
   atktokenid:string="";
 
 
-    isValidEmail() {
+  isValidEmail() {
     return validator.validate(this.ambemail);
+  }
+
+  isTaiwanID() { 
+   let re = new RegExp(/^[A-Z]\d{9}$/);
+   return re.test(this.ambno);
   }
 }
 

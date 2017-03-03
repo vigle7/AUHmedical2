@@ -1,10 +1,10 @@
 StackLayout {
-  margin-left: 30;
-  margin-right: 30;
-  padding-bottom: 15;
+  margin-left: 15;
+  margin-right: 15;
+  padding-bottom: 7;
   background-color: white;
-  width: 80%;
-  border-radius: 10;
+  width: 95%;
+  /*border-radius: 10;*/
 }
 Image {
   margin-top: 5;
@@ -25,16 +25,15 @@ TextField {
 
 .submit-button {
   width:80%;
-  height: 20%;
-  background-color:#ff7777;
+  height: 80;
+  background-color:#ff9f9f;
   color: white;
   margin-top: 20;
-  border-radius: 10;
 }
 
 .join-button {
   width:40%;
-  height: 20%;
-  background-color:#2894ff;
+  height: 80;
+  background-color:#7ebeff;
   color: white;
 }
