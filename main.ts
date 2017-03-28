@@ -53,6 +53,13 @@ import * as dialogs from "ui/dialogs";
 
   });
 
+  global.loginResponse = {
+                        'authResult':'0',
+                        'accountName':'',      
+                        'familyMember':'',    
+                        'accoutMemberNo':'',  //若病人在亞大為病歷號，否則為身分證前面加X
+                      };
+
 
 //setStatusBarColors();
 platformNativeScriptDynamic({startPageActionBarHidden: false}).bootstrapModule(AppModule);

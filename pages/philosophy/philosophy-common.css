@@ -1,0 +1,14 @@
+Image{
+	margin-left: 18px;
+}
+
+Label{
+	margin-left: 18px;	
+	margin-right: 18px;
+}
+
+.coverImage {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

@@ -1,39 +1,19 @@
-StackLayout {
-  margin-left: 30;
-  margin-right: 30;
-  padding-bottom: 15;
-  background-color: white;
-  width: 90%;
-  border-radius: 10;
-}
-Image {
-  margin-top: 5;
-  margin-bottom: 20;
-}
-Label{
-  padding-top: 20;
-  margin-bottom: 20;
-}
 
-TextField {
-  margin-left: 30;
-  margin-right: 30;
-  margin-bottom: 10;
-  width:80%;
+.leftSubButton{
+    width:33%;
+    height:100;
+    font-size: 18;
+    background-color:#e5f1f3;
 }
 
 
-.submit-button {
-  width:80%;
-  height: 80;
-  background-color:#ff9f9f;
-  color: white;
-  margin-top: 20;
+.rightSubButton{
+    width:33%;
+    height:100;
+    font-size: 18;
+    background-color:#efedec;
 }
 
-.join-button {
-  width:40%;
-  height: 80;
-  background-color:#7ebeff;
-  color: white;
+button{
+	font-size:28;
 }

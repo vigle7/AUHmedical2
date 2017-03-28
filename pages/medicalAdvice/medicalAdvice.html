@@ -1,0 +1,207 @@
+	<ActionBar> 
+		<StackLayout orientation="horizontal"
+		    ios:horizontalAlignment="center"
+		    android:horizontalAlignment="center">
+		    <Label text="亞大一點通"></Label>
+		</StackLayout>
+
+ 		
+
+  	    <ActionItem ios.systemIcon="1" android.systemIcon="ic_menu_close_clear_cancel" ios.position="right" [nsRouterLink]="['/menu']"></ActionItem>
+	</ActionBar>
+
+		<TabView>
+		    <StackLayout style="font-size:22px;" *tabItem="{title: '門診須知'}">
+    			<ScrollView class="coverImage">
+			        <GridLayout width="90%" rows="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" columns="3*, 6*" style="margin-top: 20px;">
+						<Label row="0" colSpan="2" style="background-color: #847066;color:white;font-size: 20; padding-top: 20;text-align: center;" height="80vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="26" text="門診時刻表"></Span>
+						    </FormattedString>
+						</Label>
+
+
+						<Label row="1" col="0" style="background-color: #96ced3;color:#191919; font-size: 20; text-align: center;padding: 10;" height="60vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="看診時間"></Span>
+						    </FormattedString>
+						</Label>
+						<Label row="1" col="1" style="background-color: #CCDBDC;color:#191919; font-size: 20; text-align: center;padding: 10;" height="60vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="當日現場掛號開放時間"></Span>
+						    </FormattedString>
+						</Label>
+
+
+
+
+
+						<Label rowSpan="2" row="2" col="0" style="background-color: #ceeaed;color:#191919; font-size: 20; text-align: center;padding-top: 40;" height="110vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="08:30-12:00"></Span>
+						    </FormattedString>
+						</Label>
+
+
+
+		            	<Label row="2" col="1" style="background-color: #e8eced;color:#191919; font-size: 20; text-align: center;padding: 10;" height="55vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="西醫 08:00-11:30"></Span>
+						    </FormattedString>
+						</Label>
+						<Label row="3" col="1" style="background-color: #e8eced;color:#191919; font-size: 20; text-align: center;padding: 10;" height="55vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="中醫 08:00-12:00"></Span>
+						    </FormattedString>
+						</Label>
+
+						<Label row="4" col="0" colSpan="2" style="background-color: white;height:1" ></Label>
+
+						<Label rowSpan="2" row="5" col="0" style="background-color: #ceeaed;color:#191919; font-size: 20; text-align: center;padding-top: 40;" height="110vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="13:30-17:00"></Span>
+						    </FormattedString>
+						</Label>
+
+		            	<Label row="5" col="1" style="background-color: #e8eced;color:#191919; font-size: 20; text-align: center;padding: 10;" height="55vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="西醫 08:00-16:30"></Span>
+						    </FormattedString>
+						</Label>
+						<Label row="6" col="1" style="background-color: #e8eced;color:#191919; font-size: 20; text-align: center;padding: 10;" height="55vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="中醫 08:00-17:00"></Span>
+						    </FormattedString>
+						</Label>
+
+						<Label row="7" col="0" colSpan="2" style="background-color: white;height:1" ></Label>
+
+						<Label rowSpan="2" row="8" col="0" style="background-color: #ceeaed;color:#191919; font-size: 20; text-align: center;padding-top: 40;" height="110vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="18:30-21:00"></Span>
+						    </FormattedString>
+						</Label>
+
+		            	<Label row="8" col="1" style="background-color: #e8eced;color:#191919; font-size: 20; text-align: center;padding: 10;" height="55vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="西醫 08:00-20:30"></Span>
+						    </FormattedString>
+						</Label>
+						<Label row="9" col="1" style="background-color: #e8eced;color:#191919; font-size: 20; text-align: center;padding: 10;" height="55vh" >
+						    <FormattedString>
+						        <Span  fontAttributes="Bold" fontSize="22" 
+							       text="中醫 08:00-21:00"></Span>
+						    </FormattedString>
+						</Label>
+
+						<Label text="24小時服務" row="10" col="0" colSpan="2" style="color:#191919; font-size: 18; text-align: left;" >
+						</Label>
+						<Label text="08:00-17:00 (周一至周五)" row="11" col="0" colSpan="2" style="color:#191919; font-size: 18; text-align: left;">
+						</Label>
+						<Label text="08:00-12:00 (周六)" row="12" col="0" colSpan="2" style="color:#191919; font-size: 18; text-align: left;">
+						</Label>
+						<Label row="13" col="0" colSpan="2" style="height:20">
+						</Label>
+						<Label text="備註：" row="14" col="0" colSpan="2" style="color:#191919; font-size: 18; text-align: left;">
+						</Label>
+						<Label textWrap="true" text="各棟大樓櫃檯夜間時段，將視情形調度人員駐點服務開啟。&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;" row="15" col="0" colSpan="2" style="color:#191919; font-size: 18; text-align: left;">
+						</Label>
+
+					</GridLayout>
+				</ScrollView>
+		    </StackLayout>
+
+		    <StackLayout style="font-size:18px;color:black" *tabItem="{title: '急診須知'}">
+    			<ScrollView class="coverImage" id="padding">
+			        <GridLayout rows="40, *, *, *" columns="*" >
+
+					<Label row="0" col="0"></Label>
+
+					<Label textWrap="true" row="1" col="0" horizontalAlignment="center" >
+					    <FormattedString>
+					        <Span
+						       text="        急診的看診順序非以到院的先後順序來決定，而是依病情的嚴重度及急迫性來決定，也就是危急的先看，畢竟生命是不能等候！&#13;&#10;&#13;&#10;        「檢傷分類」即是急診檢傷站的資深護理人員，依據病患的主訴、疾病史、疾病的嚴重度及迫切性等，配合「檢傷分類概要分級表」，快速篩檢疾病的輕重緩急，來決定看診的優先順序。目的是希望將有限的緊急醫療資源，發揮到最大的效應，使病患能在最短的時間內，得到最適的醫療服務。&#13;&#10;"></Span>
+					    </FormattedString>
+					</Label>
+
+					<Label textWrap="true" row="2" col="0" style="background-color:#847066;color:white;width:100%;height:50vh;text-align: center;padding: 10">
+					    <FormattedString>
+					        <Span  fontAttributes="Bold" fontSize="22"
+						       text="急診服務說明"></Span>
+					    </FormattedString>
+					</Label>
+
+					<Label  textWrap="true" row="3" col="0" horizontalAlignment="center">
+					    <FormattedString>
+					        <Span
+					        text="&#13;&#10;        如病人情況危急，檢傷護士會直接把病人送至急救室急救，再請家屬至急診櫃台掛號。醫師看診及處理順序係依照病人病情危急程度（即檢傷分類）決定，而非以掛號的時間先後順序來決定。&#13;&#10;&#13;&#10;        若您忘了攜帶健保卡，請先以自費結帳，七天內再攜帶原收據、健保卡、身分證或其他相關證件前至原繳費櫃台辦理退費。&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;"></Span>
+					    </FormattedString>
+					</Label>
+					</GridLayout>
+				</ScrollView>
+		    </StackLayout>
+
+		    <StackLayout style="font-size:18px;color:black" *tabItem="{title: '住院須知'}">
+    			<ScrollView class="coverImage" id="padding">
+			        <GridLayout rows="20, *, *, *, *, *, *, *, *" columns="*" >
+					
+
+						<Label row="0" col="0"></Label>
+
+						<Label textWrap="true" row="1" col="0" horizontalAlignment="center" >
+						    <FormattedString>
+						        <Span
+							       text="&#13;&#10;        門禁管制時間：夜間22：00 - 翌日 06：45，住院日當日住院人須親自至住院中心報到。&#13;&#10;"></Span>
+						    </FormattedString>
+						</Label>
+
+						<StackLayout style="background-color: white;height:4;width:90%" row="2" col="0"></StackLayout>
+
+						<Label textWrap="true" row="3" col="0" horizontalAlignment="center" >
+						    <FormattedString>
+						        <Span
+							       text="&#13;&#10;住院當日報到時請攜帶下列資料：&#13;&#10;&#13;&#10;- 病人本人身分證正本與健保卡。&#13;&#10;- 施行手術者請攜帶填妥的「手術同意書」。&#13;&#10;- 請自備日常用品(陪病者請自備棉被急枕頭)。&#13;&#10;- 請攜帶平日服用藥物或藥品名稱，交予或告知護理人員。&#13;&#10;- 手機請隨身攜帶小心保管。&#13;&#10;"></Span>
+						    </FormattedString>
+						</Label>
+
+						<StackLayout style="background-color: white;height:4;width:90%" row="4" col="0"></StackLayout>
+
+						<Label textWrap="true" row="5" col="0" horizontalAlignment="center" >
+						    <FormattedString>
+						        <Span
+							       text="&#13;&#10;注意事項：&#13;&#10;&#13;&#10;- 請盡量不要攜帶貴重物品，如：耳環、戒指、項鍊。&#13;&#10;- 如有特殊事故必須離開病房，請通知護士辦理請假手續(依健保局規定每日以不超過四小時為限)。&#13;&#10;"></Span>
+						    </FormattedString>
+						</Label>
+
+						<StackLayout style="background-color: white;height:4;width:90%" row="6" col="0"></StackLayout>
+
+						<Label textWrap="true" row="7" col="0" horizontalAlignment="center" >
+						    <FormattedString>
+						        <Span
+							       text="&#13;&#10;        住院中心服務時間：&#13;&#10;週一～週五  08：00 - 17：00&#13;&#10;週六～週日  08：00 - 12：00&#13;&#10;"></Span>
+						    </FormattedString>
+						</Label>
+
+						<Image src="res://flowchart" stretch="aspectFill" row="8" col="0" ></Image>
+
+
+
+
+					</GridLayout>
+				</ScrollView>
+		    </StackLayout>
+
+		</TabView>
+
+
+

@@ -1,0 +1,65 @@
+	<ActionBar> 
+		<StackLayout orientation="horizontal"
+		    ios:horizontalAlignment="center"
+		    android:horizontalAlignment="center">
+		    <Label text="亞大一點通"></Label>
+		</StackLayout>
+
+ 		
+
+  	    <ActionItem ios.systemIcon="1" android.systemIcon="ic_menu_close_clear_cancel" ios.position="right" [nsRouterLink]="['/menu']"></ActionItem>
+	</ActionBar>
+
+		<TabView>
+		    <StackLayout style="font-size:18px;color:black;" *tabItem="{title: '董事長的話'}">
+    			<ScrollView class="coverImage" backgroundImage="res://greenbg">
+			        <GridLayout rows="60,*,40, *" columns="*, *" >
+						<Image src="res://page01" stretch="aspectFill" row="1" col="0"></Image>
+
+						<Label textWrap="true" row="1" col="1" horizontalAlignment="center" >
+						    <FormattedString>
+						        <Span  
+							       text="        本院為中國醫藥大學附設醫院，提供優異的醫療服務、臨床教學及研究發展，致力中醫藥現代化，並持續與形象良好且認同本院經營理念的醫療院所結盟，全力建構「中國醫療體系網」，實踐「以病人為中心」的醫療使命。"></Span>
+						    </FormattedString>
+						</Label>
+
+						<Label  textWrap="true" row="3" colSpan="2" horizontalAlignment="center">
+						    <FormattedString>
+						        <Span 
+						        text="        在全體董事的支持、歷任院長的帶領和全體同仁的努力下，建立穩固的基礎並逐年發展，陸續成立世界級整合醫療中心及研究中心。董事會亦擘劃發展願景，朝「國際一流中、西醫學中心」及「全球聞名的高科技生醫園區」目標邁進。&#13;&#10;&#13;&#10;我們努力的方向有：&#13;&#10;一、全面提升醫療服務品質。&#13;&#10;二、發展全人醫學教育，培育優秀人才。&#13;&#10;三、結合大學資源，致力本土化及優質化研究。&#13;&#10;四、持續提升員工福利，創造優質的工作環境。&#13;&#10;五、推動社區預防醫學、防疫、健康城市之醫療政策。&#13;&#10;六、面對高齡化社會，發展長期照護和老人醫學，提高老人照護品質。&#13;&#10;七、發展生醫產業，從事關係人類健康福祉的研究發展。&#13;&#10;&#13;&#10;        「企業社會責任」是機構永續經營的基礎，「傳承醫學智慧與結晶、深入本土性疾病研究、提供最高品質的醫療服務」是我們的基本社會責任，秉持「取之社會、用之社會」的回饋理念，以「作育英才、救人於溺」為回饋社會的志業，進而因應人類更多的需求，為全世界服務，讓台灣人引以為榮。&#13;&#10;&#13;&#10;        展望未來，本院將持續以「健康、關懷、創新、卓越」的精神，秉持「以員工為重、以病患為尊、以醫院為榮」的核心價值，塑造「和諧、關懷、有愛心、有向心力、有企圖心、追求卓越、有效率且有藝術氣息」的醫院文化，提供最好的「服務、教學、研究」，實現「國際一流中、西醫學中心」及「全球聞名的高科技生醫園區」的願景。&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;"></Span>
+						    </FormattedString>
+						</Label>
+					</GridLayout>
+				</ScrollView>
+		    </StackLayout>
+
+
+
+
+
+
+		    <StackLayout style="height:100%;font-size:18px;color:black;" *tabItem="{title: '院長的話'}">
+    			<ScrollView class="coverImage" backgroundImage="res://greenbg">
+			        <GridLayout rows="60,*,40, *" columns="*, *" >
+						<Image src="res://page02" stretch="aspectFill" row="1" col="0"></Image>
+
+					<Label textWrap="true" row="1" col="1" horizontalAlignment="center" >
+					    <FormattedString>
+					        <Span  
+						       text="        101年中國醫藥大學躋身上海交通大學統計之世界500大，且臨床醫學領域進入世界200強。中國醫藥大學附設醫院隨著學校進步的腳步邁進，在臨床、教學及研究方面，仍將以國際水準的目標而努力。"></Span>
+					    </FormattedString>
+					</Label>
+
+					<Label  textWrap="true" row="3" colSpan="2" horizontalAlignment="center">
+					    <FormattedString>
+					        <Span 
+					        text="        臨床方面，持續秉持著以病人為中心之理念，期望能努力成為臺灣梅約之精神標竿醫院，以急重難症為醫院服務發展之主軸，除積極投入龐大資源於器官移植、癌症、腦中風、外傷急症、重建整型及心臟血管等方面外，專家學者亦皆是國內外一時之選。&#13;&#10;&#13;&#10;        而為使病人有良好的預後，更不惜重金引進微創手術、內視鏡手術、達文西機器手臂等先進技術與儀器，在大腸直腸、泌尿、心臟外科、婦癌手術、神經外科、骨科、消化系等各科努力推展下，已使本院成為臺灣微創手術之重鎮。&#13;&#10;&#13;&#10;        101年雖有幸榮獲遠見雜誌評比醫療服務類醫學中心首獎，但我們在醫療品質方面仍需要再精進。以病人為中心就是隨時隨地要以病人的利益、安全做最大考量。另一方面，為了提升醫療服務效能，將徹底實施醫療作業電子化，包括電子病歷、無紙化進程及醫療照護及品質監測電子化系統。&#13;&#10;&#13;&#10;        在教學方面，除了落實各層級醫療人員教育課程外，更加強員工服務之教育內容，並將學習課程改版為混成式電子教學課程，此最先進之教學系統目前已廣為各科採用。而教學型主治醫師制度的實施使教學更專業化與精緻化。&#13;&#10;&#13;&#10;        在研究發展上，與學校共同合作，持續重點發展幹細胞、中草藥、轉譯醫學研究及生醫產業，並仍致力於產學合作及高水準之論文研究，期待早日進入世界400大之行列。秉持對社會人類之良知，持續發展大學附設醫院之角色，將服務、教學與研究發揮到極致，以改善國人健康照護品質及提升其健康福祉。&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;"></Span>
+					    </FormattedString>
+					</Label>
+					</GridLayout>
+				</ScrollView>
+		    </StackLayout>
+		</TabView>
+
+
+
