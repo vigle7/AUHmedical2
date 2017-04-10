@@ -6,10 +6,24 @@ import * as LocalNotifications from "nativescript-local-notifications";
 import firebase = require("nativescript-plugin-firebase");
 const Toast = require("nativescript-toast");
 import * as dialogs from "ui/dialogs";
+const appSettings = require("application-settings");
 
 
+  global.loginResponse = {
+                          'authResult':'0',
+                          'accountName':'',      
+                          'familyMember':'',    
+                          'accoutMemberNo':'',  //若病人在亞大為病歷號，否則為身分證前面加X
+                          'member_id':'',
+                          'member_passwd':'',
+                          'tokenid':'',
+                    　  };
 
-  firebase.init({  //在foreground才會執行  backgorund只有通知列的通知
+  firebase.init({  
+    onPushTokenReceivedCallback: function(token) {
+      global.loginResponse.tokenid = token;
+    },
+    //在foreground才會執行  backgorund只有通知列的通知
     onMessageReceivedCallback: function(message) {
 
       if(message.title===null || message.title===undefined || message.title===""){
@@ -53,13 +67,10 @@ import * as dialogs from "ui/dialogs";
 
   });
 
-  global.loginResponse = {
-                        'authResult':'0',
-                        'accountName':'',      
-                        'familyMember':'',    
-                        'accoutMemberNo':'',  //若病人在亞大為病歷號，否則為身分證前面加X
-                      };
 
+  // if(appSettings.getString("tokenid")!==undefined){
+  //   global.loginResponse.tokenid = appSettings.getString("tokenid");
+  //   alert(global.loginResponse.tokenid);
+  // }
 
-//setStatusBarColors();
 platformNativeScriptDynamic({startPageActionBarHidden: false}).bootstrapModule(AppModule);

@@ -1,10 +1,14 @@
-import { Component,  OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { Page } from "ui/page";
+import { Component, ViewChild, ChangeDetectorRef, Inject, OnInit, AfterViewInit ,ElementRef} from "@angular/core";
+import { Router, NavigationEnd } from "@angular/router";
 import tabViewModule = require("ui/tab-view");
+import { View } from "ui/core/view";
+import {Page} from "ui/page";
+import observable = require("data/observable");
+import {RadSideDrawerComponent, SideDrawerType} from 'nativescript-telerik-ui-pro/sidedrawer/angular';
+import {DrawerTransitionBase, SlideInOnTopTransition} from 'nativescript-telerik-ui-pro/sidedrawer';
 
 const Toast = require("nativescript-toast");
-
+const fetchModule = require("fetch");
 
 @Component({
   selector: "menu",
@@ -12,20 +16,85 @@ const Toast = require("nativescript-toast");
   templateUrl: "pages/menu/menu.html",
   styleUrls: ["pages/menu/menu-common.css"],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit,AfterViewInit {
+
+  @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+  @ViewChild("actionItem") actionItem: ElementRef;
+  @ViewChild("signOutBtn") signOutBtn: ElementRef;
+  @ViewChild("signInBtn") signInBtn: ElementRef;
+  
+
+  private _sideDrawerTransition: DrawerTransitionBase;
+  private drawer: SideDrawerType;
 
   private showButtonArray:Array<boolean>=[false,false,false,false,false,false,false,false,false,false,false,false,false　];
 
   private showWebView:boolean;
   private hospaliasno:number;
   private toast:any;
-  constructor(private router: Router,  private page: Page) {
 
+  private member:any = new observable.Observable();
+  private authResult:string = global.loginResponse.authResult;
+
+//@ViewChild("sideDrawer") sideDrawer: ElementRef;
+
+  constructor(private router: Router,  @Inject(Page) private page: Page,
+    private changeDetectionRef: ChangeDetectorRef) {
+    page.on("loaded", this.onLoaded, this);
+  }
+
+  
+  public get sideDrawerTransition(): DrawerTransitionBase {
+    return this._sideDrawerTransition;
+  }
+  
+  public toggle() {
+    this.drawer.toggleDrawerState();
+  }
+
+  public onLoaded(args) {
+    this._sideDrawerTransition = new SlideInOnTopTransition();
   }
 
   ngOnInit() {
 
         this.showWebView = false;
+        this.router.events.subscribe((e) => {
+                if (e instanceof NavigationEnd) {
+                    this.drawer.closeDrawer();
+                }
+        });
+
+        if( global.loginResponse.accountName===''){//未登入會員
+            this.member.set("name", '');
+            this.signOutBtn.nativeElement.visibility='collapsed';
+            this.signInBtn.nativeElement.visibility='visible';
+        }else{                                     //已登入會員
+            this.member.set("name", global.loginResponse.accountName+'  您好');
+            this.signOutBtn.nativeElement.visibility='visible';
+            this.signInBtn.nativeElement.visibility='collapsed';
+            
+        }
+
+        this.member.addEventListener(observable.Observable.propertyChangeEvent,  (pcd: observable.PropertyChangeData)=> {
+            if(this.member.name===''){ //登出會員
+                this.actionItem.nativeElement.text = '';
+                this.signOutBtn.nativeElement.visibility='collapsed';
+                this.signInBtn.nativeElement.visibility='visible';
+                return
+            }else{
+                this.member.set("name", global.loginResponse.accountName+'  您好');
+                this.signOutBtn.nativeElement.visibility='visible';
+                this.signInBtn.nativeElement.visibility='collapsed';
+            }
+     
+        });
+
+  }
+
+  ngAfterViewInit() {
+    this.drawer = this.drawerComponent.sideDrawer;
+    this.changeDetectionRef.detectChanges();
   }
 
   submit(arg){
@@ -132,27 +201,71 @@ export class MenuComponent implements OnInit {
           this.router.navigate(["/webView",`http://61.66.117.88/HealthManage/Home/Index/${global.loginResponse.accoutMemberNo}/1`]);
               break;
           case "血糖":
-          this.router.navigate(["/webView",`http://61.66.117.88/WPAppWebQuery/WFInstructionMain.aspx?memberno=${global.loginResponse.accoutMemberNo}&WSuserid=cmuh_appmobile&WSPassword=appmobile_cmuh&hospaliasno=${this.hospaliasno}`]);
+          this.router.navigate(["/webView",`http://61.66.117.88/HealthManage/Home/Index/${global.loginResponse.accoutMemberNo}/2`]);
               break;
           case "BMI":
-          this.router.navigate(["/webView",`http://61.66.117.88/WPAppWebQuery/WFInstructionMain.aspx?memberno=${global.loginResponse.accoutMemberNo}&WSuserid=cmuh_appmobile&WSPassword=appmobile_cmuh&hospaliasno=${this.hospaliasno}`]);
+          this.router.navigate(["/webView",`http://61.66.117.88/HealthManage/Home/Index/${global.loginResponse.accoutMemberNo}/3`]);
               break;
+
+          case "登出":
+              this.member.set("name", '');
+              global.loginResponse.accountName = '';
+              global.loginResponse.authResult = '0';
+              this.drawer.closeDrawer();
+              this.toast = Toast.makeText("登出成功");
+              this.toast.show();
+              break;
+          case "我的訊息":
+          alert(global.loginResponse.tokenid);
+          if(global.loginResponse.authResult=='0'){
+            this.router.navigate(["/webView",`http://61.66.117.88/WPAppWebQuery/WFNotificationMessage.aspx?tokentype=D2&tokenid=${global.loginResponse.tokenid}&hospaliasno=22&WSuserid=cmuh_appmobile&WSPassword=appmobile_cmuh`]);}
+          else{
+            this.router.navigate(["/webView",`http://61.66.117.88/WPAppWebQuery/WFNotificationMessage.aspx?tokentype=D2&tokenid=${global.loginResponse.tokenid}&memberno=${global.loginResponse.accoutMemberNo}&hospaliasno=22&WSuserid=cmuh_appmobile&WSPassword=appmobile_cmuh`]);}
+              break;
+          case "設定":
+          console.log(global.loginResponse.tokenid);
+          this.router.navigate(["/webView",`<!DOCTYPE html>
+                                            <html>
+                                                <head>
+                                                    <meta charset="utf-8" />
+                                                </head>
+                                            <body> 
+                                            <form name="f" action="http://61.66.117.88/WPAppWebQuery/WFMemberSet.aspx" method="POST"  >
+                                                <input type="hidden"  value=${global.loginResponse.member_id}     name= "member_id" >
+                                                <input type="hidden"  value=${global.loginResponse.member_passwd}   name= "member_passwd" >
+                                                <input type="hidden"  value="22"     name= "hospaliasno" >
+                                                <input type="hidden"  value="D2"   name= "tokentype" >
+                                                <input type="hidden"  value="appmobile_cmuh"   name= "WSPassword" >
+                                                <input type="hidden"  value="cmuh_appmobile"     name= "WSuserid" >
+                                                <input type="hidden"  value=${global.loginResponse.tokenid}   name= "tokenid" >
+                                            </form>
+                                            <script type= "text/javascript">
+                                            document.forms["f"].submit();
+                                            </script>
+
+                                            </body>
+                                            </html>`]);
+              break;
+
+
+
+              
               
 
           default:
 
       }
-      //this.params.closeCallback();
+
   }
 
   showButton(idx){
 
-      if(idx===8){ //會員專區
-          if(global.loginResponse.authResult!=='1'){
+      if(idx===9||idx===10||idx===11||idx===12){ //會員專區
+          if(global.loginResponse.authResult==='0'){
               this.toast = Toast.makeText("請先登入會員");
               this.toast.show();
-
-              return}
+              return
+            }
       }
 
       for(let i=0;i<this.showButtonArray.length;i++){
@@ -163,5 +276,9 @@ export class MenuComponent implements OnInit {
           }
       }
   }
+
+
+  
+
 
 }

@@ -1,31 +1,70 @@
-<ActionBar title="亞大附醫"></ActionBar>
+
+<ActionBar>
+	  <WrapLayout orientation="horizontal"
+	    ios:horizontalAlignment="center"
+	    android:horizontalAlignment="center">
+	    <Label text="亞大附屬醫院"></Label>
+	  </WrapLayout>
+
+	  <ActionItem #actionItem [text]="member.name" ios.position="right" ></ActionItem>
+
+<!--   <ActionItem android.position="left" (tap)="toggle()">
+
+    <Button style="background-color: white;">
+    
+        <FormattedString>
+            <Span text="&#xf0c9;" fontFamily="fontawesome-webfont"></Span>
+        </FormattedString>
+
+    </Button>
+
+  </ActionItem> -->
+
+ 		  <NavigationButton text="選單" android.systemIcon="ic_menu_moreoverflow_normal_holo_light" (tap)="toggle()"></NavigationButton>
+
+
+</ActionBar>
 
 
 
+
+
+<RadSideDrawer #drawer selectionBehavior="None">
+    <StackLayout tkDrawerContent style="background-color: #6B818C">
+        <StackLayout Height="100%">
+		    <Button  text="設定" (tap)="submit('設定')" style="background-color: #CCDBDC;text-align: left;"></Button>
+		    <Button text="我的訊息" (tap)="submit('我的訊息')" style="background-color: #CCDBDC;text-align: left;"></Button>
+		    <Button #signInBtn text="登入會員" [nsRouterLink]="['/login']" style="background-color: #CCDBDC;text-align: left;"></Button>
+		    <Button #signOutBtn text="登出" (tap)="submit('登出')" style="background-color: #CCDBDC;text-align: left;"></Button>
+
+        </StackLayout>
+
+    </StackLayout>
+
+
+
+   <StackLayout tkMainContent>
 
     <GridLayout rows="*" columns="*">
 
 	        <StackLayout  [visibility]="!showWebView ? 'visible' : 'collapse'" row="0" column="0">
 
 			        <WrapLayout height="100" backgroundColor="#FFE9CC">
-			          <Label text="This is Label in Tab 1"></Label>
+						<Button text="OPEN DRAWER" (tap)="openDrawer()"></Button>
 			        </WrapLayout>
  
 					<TabView>
-				        <WrapLayout backgroundColor="#CCE2FF" *tabItem="{title: '一般功能'}"> 
+				        <WrapLayout backgroundColor="#bedee1" *tabItem="{title: '一般功能'}"> 
 
-					        <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(0)" >
+					        <Button class="changeStyle" (tap)="showButton(0)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf067; 行動掛號" fontFamily="fontawesome-webfont"></Span>
 					                </FormattedString>
-					<!--               <FormattedString>
-					                  <Span text="&#xf067;" fontSize=100 fontFamily="fontawesome-webfont"></Span>
-					                  <Span text="&#13;&#10;行動掛號" fontSize=20></Span>
-					              </FormattedString> -->
+
 					        </Button>
 
-					        <Button style="background-color: #847066;width:50%;height:100;color:#fffaf4;" (tap)="showButton(1)" >
+					        <Button class="generalButton" (tap)="showButton(1)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf271; 預約查詢" fontFamily="fontawesome-webfont"></Span>
@@ -33,17 +72,17 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" [visibility]="showButtonArray[0] ? 'visible' : 'collapse'">
-						        <Button text="依科別掛號" class="leftSubButton" (tap)="submit('依科別掛號')"></Button>
-						        <Button text="依醫師掛號" class="leftSubButton" (tap)="submit('依醫師掛號')"></Button>
-					  	        <Button text="依歷史記錄掛號" class="leftSubButton" (tap)="submit('依歷史記錄掛號')"></Button>
+			                <FlexboxLayout class="generalSubButton" [visibility]="showButtonArray[0] ? 'visible' : 'collapse'">
+						        <Button text="依科別掛號"  (tap)="submit('依科別掛號')"></Button>
+						        <Button text="依醫師掛號"  (tap)="submit('依醫師掛號')"></Button>
+					  	        <Button text="依歷史記錄掛號"  (tap)="submit('依歷史記錄掛號')"></Button>
 				            </FlexboxLayout>
 
-				            <FlexboxLayout backgroundColor="#c2b9b4" justifyContent = "center" width="100%" [visibility]="showButtonArray[1] ? 'visible' : 'collapse'">
-						        <Button text="掛號查詢或取消" class="rightSubButton" (tap)="submit('掛號查詢或取消')"></Button>
+				            <FlexboxLayout class="generalSubButton" justifyContent = "center" width="100%" [visibility]="showButtonArray[1] ? 'visible' : 'collapse'">
+						        <Button text="掛號查詢或取消" (tap)="submit('掛號查詢或取消')"></Button>
 				            </FlexboxLayout>
 
-					        <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(2)" >
+					        <Button class="generalButton" (tap)="showButton(2)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf274; 進度查詢" fontFamily="fontawesome-webfont"></Span>
@@ -51,7 +90,7 @@
 
 					        </Button>
 
-				  	        <Button style="background-color: #847066;width:50%;height:100;color:#fffaf4;" (tap)="showButton(3)" >
+				  	        <Button class="generalButton" (tap)="showButton(3)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf1ea; 最新消息" fontFamily="fontawesome-webfont"></Span>
@@ -59,21 +98,21 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" [visibility]="showButtonArray[2] ? 'visible' : 'collapse'">
-						        <Button text="其它進度查詢" class="leftSubButton" (tap)="submit('其它進度查詢')"></Button>
-					  	      <Button text="依診間查看診進度" class="leftSubButton" (tap)="submit('依診間查看診進度')"></Button>
-						        <Button text="依病人查看診進度" class="leftSubButton" (tap)="submit('依病人查看診進度')"></Button>
+			                <FlexboxLayout class="generalSubButton" backgroundColor="#bedee1" [visibility]="showButtonArray[2] ? 'visible' : 'collapse'">
+						        <Button text="其它進度查詢" (tap)="submit('其它進度查詢')"></Button>
+					  	        <Button text="依診間查看診進度" (tap)="submit('依診間查看診進度')"></Button>
+						        <Button text="依病人查看診進度" (tap)="submit('依病人查看診進度')"></Button>
 				            </FlexboxLayout>
 
-			                <FlexboxLayout backgroundColor="#c2b9b4" [visibility]="showButtonArray[3] ? 'visible' : 'collapse'">
-						        <Button text="建康新知" class="rightSubButton" (tap)="submit('健康新知')"></Button>
-				  	  	        <Button text="醫院新訊" class="rightSubButton" (tap)="submit('醫院新訊')"></Button>
-				  		        <Button text="醫師介紹" class="rightSubButton" (tap)="submit('醫師介紹')"></Button>
+			                <FlexboxLayout class="generalSubButton" [visibility]="showButtonArray[3] ? 'visible' : 'collapse'">
+						        <Button text="建康新知" (tap)="submit('健康新知')"></Button>
+				  	  	        <Button text="醫院新訊" (tap)="submit('醫院新訊')"></Button>
+				  		        <Button text="醫師介紹" (tap)="submit('醫師介紹')"></Button>
 				            </FlexboxLayout>
 
 
 
-				  	        <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(4)" >
+				  	        <Button class="generalButton" (tap)="showButton(4)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf0fa; 用藥服務" fontFamily="fontawesome-webfont"></Span>
@@ -81,7 +120,7 @@
 
 					        </Button>
 
-					        <Button style="background-color: #847066;width:50%;height:100;color:#fffaf4;" (tap)="showButton(5)" >
+					        <Button class="generalButton" (tap)="showButton(5)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf0f0; 衛教資訊" fontFamily="fontawesome-webfont"></Span>
@@ -89,18 +128,18 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" justifyContent = "center" width="100%"  [visibility]="showButtonArray[4] ? 'visible' : 'collapse'">
-					  	        <Button text="西藥服務" class="leftSubButton" (tap)="submit('西藥服務')"></Button>
-				  		        <Button text="中藥服務" class="leftSubButton" (tap)="submit('中藥服務')"></Button>
+			                <FlexboxLayout class="generalSubButton" justifyContent = "center" width="100%"  [visibility]="showButtonArray[4] ? 'visible' : 'collapse'">
+					  	        <Button text="西藥服務" (tap)="submit('西藥服務')"></Button>
+				  		        <Button text="中藥服務" (tap)="submit('中藥服務')"></Button>
 				            </FlexboxLayout>
 
-			                <FlexboxLayout backgroundColor="#c2b9b4" [visibility]="showButtonArray[5] ? 'visible' : 'collapse'">
-						        <Button text="中亞健康網" class="rightSubButton" (tap)="submit('中亞健康網')"></Button>
-						        <Button text="衛教單張" class="rightSubButton" (tap)="submit('衛教單張')"></Button>
-						        <Button text="影音衛教搜尋" class="rightSubButton" (tap)="submit('影音衛教搜尋')"></Button>
+			                <FlexboxLayout class="generalSubButton" [visibility]="showButtonArray[5] ? 'visible' : 'collapse'">
+						        <Button text="中亞健康網" (tap)="submit('中亞健康網')"></Button>
+						        <Button text="衛教單張" (tap)="submit('衛教單張')"></Button>
+						        <Button text="影音衛教搜尋" (tap)="submit('影音衛教搜尋')"></Button>
 				            </FlexboxLayout>
 
-				  	        <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(6)" >
+				  	        <Button class="generalButton" (tap)="showButton(6)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf041; 交通資訊" fontFamily="fontawesome-webfont"></Span>
@@ -108,7 +147,7 @@
 
 					        </Button>
 
-					        <Button style="background-color: #847066;width:50%;height:100;color:#fffaf4;" (tap)="showButton(7)" >
+					        <Button class="generalButton" (tap)="showButton(7)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf02d; 就醫指南" fontFamily="fontawesome-webfont"></Span>
@@ -116,19 +155,19 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" [visibility]="showButtonArray[6] ? 'visible' : 'collapse'">
-			                	<Button text="院內交通" class="leftSubButton" (tap)="submit('院內交通')"></Button>
-					  	        <Button text="院外交通" class="leftSubButton" (tap)="submit('院外交通')"></Button>
-				  		        <Button text="路徑規劃" class="leftSubButton" (tap)="submit('路徑規劃')"></Button>
+			                <FlexboxLayout class="generalSubButton" [visibility]="showButtonArray[6] ? 'visible' : 'collapse'">
+			                	<Button text="院內交通" (tap)="submit('院內交通')"></Button>
+					  	        <Button text="院外交通" (tap)="submit('院外交通')"></Button>
+				  		        <Button text="路徑規劃" (tap)="submit('路徑規劃')"></Button>
 				            </FlexboxLayout>
 
-			                <FlexboxLayout backgroundColor="#c2b9b4" [visibility]="showButtonArray[7] ? 'visible' : 'collapse'">
-						        <Button text="服務理念" class="rightSubButton" [nsRouterLink]="['/philosophy']"></Button>
-						        <Button text="各科介紹" class="rightSubButton" (tap)="submit('各科介紹')"></Button>
-						        <Button text="就醫須知" class="rightSubButton" [nsRouterLink]="['/medicalAdvice']"></Button>
+			                <FlexboxLayout class="generalSubButton" [visibility]="showButtonArray[7] ? 'visible' : 'collapse'">
+						        <Button text="服務理念" [nsRouterLink]="['/philosophy']"></Button>
+						        <Button text="各科介紹" (tap)="submit('各科介紹')"></Button>
+						        <Button text="就醫須知" [nsRouterLink]="['/medicalAdvice']"></Button>
 				            </FlexboxLayout>
 
-				            <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(8)" >
+				            <Button class="generalButton" (tap)="showButton(8)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf004; 預防照護" fontFamily="fontawesome-webfont"></Span>
@@ -136,16 +175,16 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" justifyContent = "center" width="100%"  [visibility]="showButtonArray[8] ? 'visible' : 'collapse'">
-					  	        <Button text="免費保健" class="leftSubButton" (tap)="submit('免費保健')"></Button>
-				  		        <Button text="保健講座" class="leftSubButton" (tap)="submit('保健講座')"></Button>
+			                <FlexboxLayout class="generalSubButton" justifyContent = "center" width="100%"  [visibility]="showButtonArray[8] ? 'visible' : 'collapse'">
+					  	        <Button text="免費保健" (tap)="submit('免費保健')"></Button>
+				  		        <Button text="保健講座" (tap)="submit('保健講座')"></Button>
 				            </FlexboxLayout>
 
 				   	    </WrapLayout>
 
-				        <WrapLayout backgroundColor="#CCE2FF" *tabItem="{title: '會員專區'}"> 
+				        <WrapLayout  backgroundColor="#c2b9b4" *tabItem="{title: '會員專區'}"> 
 
-					        <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(9)" >
+					        <Button class="memberButton" (tap)="showButton(9)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf219; 會員記錄" fontFamily="fontawesome-webfont"></Span>
@@ -153,7 +192,7 @@
 
 					        </Button>
 
-				  	        <Button style="background-color: #847066;width:50%;height:100;color:#fffaf4;" (tap)="showButton(10)" >
+				  	        <Button class="memberButton" (tap)="showButton(10)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf219; 我的家人" fontFamily="fontawesome-webfont"></Span>
@@ -161,18 +200,18 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" [visibility]="showButtonArray[9] ? 'visible' : 'collapse'">
-						        <Button text="我的用藥" class="leftSubButton" (tap)="submit('我的用藥')"></Button>
-					  	        <Button text="就診前記錄" class="leftSubButton" (tap)="submit('就診前記錄')"></Button>
-						        <Button text="我的檢驗" class="leftSubButton" (tap)="submit('我的檢驗')"></Button>
+			                <FlexboxLayout class="memberSubButton" backgroundColor="#c2b9b4" [visibility]="showButtonArray[9] ? 'visible' : 'collapse'">
+						        <Button text="我的用藥" (tap)="submit('我的用藥')"></Button>
+					  	        <Button text="就診前記錄" (tap)="submit('就診前記錄')"></Button>
+						        <Button text="我的檢驗" (tap)="submit('我的檢驗')"></Button>
 				            </FlexboxLayout>
 
-			                <FlexboxLayout backgroundColor="#c2b9b4" justifyContent = "center" width="100%" [visibility]="showButtonArray[10] ? 'visible' : 'collapse'">
-						        <Button text="家人用藥" class="rightSubButton" (tap)="submit('家人用藥')"></Button>
-				  	  	        <Button text="家人衛教" class="rightSubButton" (tap)="submit('家人衛教')"></Button>
+			                <FlexboxLayout class="memberSubButton" justifyContent = "center" width="100%" [visibility]="showButtonArray[10] ? 'visible' : 'collapse'">
+						        <Button text="家人用藥" (tap)="submit('家人用藥')"></Button>
+				  	  	        <Button text="家人衛教" (tap)="submit('家人衛教')"></Button>
 				            </FlexboxLayout>
 
-				            <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(11)" >
+				            <Button class="memberButton" (tap)="showButton(11)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf219; 會員診間" fontFamily="fontawesome-webfont"></Span>
@@ -180,7 +219,7 @@
 
 					        </Button>
 
-				  	        <Button style="background-color: #847066;width:50%;height:100;color:#fffaf4;" (tap)="submit('加入會員')">
+				  	        <Button class="memberButton" (tap)="submit('加入會員')">
 					        
 					                <FormattedString>
 					                    <Span text="&#xf219; 加入會員" fontFamily="fontawesome-webfont"></Span>
@@ -188,12 +227,12 @@
 
 					        </Button>
 
-			                <FlexboxLayout backgroundColor="#bedee1" justifyContent = "center" width="100%" [visibility]="showButtonArray[11] ? 'visible' : 'collapse'">
-						        <Button text="就醫行事曆" class="leftSubButton"  (tap)="submit('就醫行事曆')"></Button>
-					  	        <Button text="我的衛教" class="leftSubButton" (tap)="submit('我的衛教')"></Button>
+			                <FlexboxLayout class="memberSubButton" justifyContent = "center" width="100%" [visibility]="showButtonArray[11] ? 'visible' : 'collapse'">
+						        <Button text="就醫行事曆" (tap)="submit('就醫行事曆')"></Button>
+					  	        <Button text="我的衛教" (tap)="submit('我的衛教')"></Button>
 				            </FlexboxLayout>
 
-				            <Button style="background-color: #7EBDC3;width:50%;height:100;color:#fffaf4;" (tap)="showButton(12)" >
+				            <Button class="memberButton" (tap)="showButton(12)" >
 					        
 					                <FormattedString>
 					                    <Span text="&#xf219; 保健管家" fontFamily="fontawesome-webfont"></Span>
@@ -201,10 +240,10 @@
 
 					        </Button>
 
-					        <FlexboxLayout backgroundColor="#bedee1" [visibility]="showButtonArray[12] ? 'visible' : 'collapse'">
-						        <Button text="血壓" class="leftSubButton" (tap)="submit('血壓')"></Button>
-					  	        <Button text="血糖" class="leftSubButton" (tap)="submit('血糖')"></Button>
-						        <Button text="BMI" class="leftSubButton" (tap)="submit('BMI')"></Button>
+					        <FlexboxLayout class="memberSubButton" [visibility]="showButtonArray[12] ? 'visible' : 'collapse'">
+						        <Button text="血壓" (tap)="submit('血壓')"></Button>
+					  	        <Button text="血糖" (tap)="submit('血糖')"></Button>
+						        <Button text="BMI" (tap)="submit('BMI')"></Button>
 				            </FlexboxLayout>
 
 
@@ -215,5 +254,7 @@
 
 
  	</GridLayout>
+ 	 </StackLayout>
+</RadSideDrawer>
 
-
+	

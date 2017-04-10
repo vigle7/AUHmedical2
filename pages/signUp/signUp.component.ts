@@ -14,7 +14,7 @@ import activityIndicatorModule = require("ui/activity-indicator");
 import firebase = require("nativescript-plugin-firebase");
 const Toast = require("nativescript-toast");
 const fetchModule = require("fetch");
-
+const appSettings = require("application-settings");
 
 interface AppState {
  state : Date
@@ -26,7 +26,7 @@ interface AppState {
   styleUrls: ["pages/signUp/signUp.css"],
 })
 export class SignUpComponent implements OnInit {
-    //@ViewChild("firstTextFieldId") firstTextField: ElementRef;
+
     private store$: Observable<Date>;
 
     private user:User;
@@ -49,15 +49,14 @@ export class SignUpComponent implements OnInit {
 
       ngOnInit() {
 
-        firebase.addOnPushTokenReceivedCallback(
-          (tokenreal)=> {
-            console.log(tokenreal);   
-            this.token = tokenreal;
-          }
-        )
+        // firebase.addOnPushTokenReceivedCallback(
+        //   (tokenreal)=> {
+        //     console.log(tokenreal);   
+        //     this.token = tokenreal;
+        //   }
+        // )
 
-        // let idTextfield = <TextField>this.firstTextField.nativeElement;   
-        // idTextfield.focus();
+   
           this.showLogin = true;
 
           let firstTextFieldId = this.page.getViewById<TextField>("firstTextFieldId");
@@ -94,6 +93,7 @@ export class SignUpComponent implements OnInit {
           }
 
           this.showLogin = false;
+          this.token =  global.loginResponse.tokenid;
 
           let parsedate = this.user.ambbgndt.toISOString().slice(0,10).replace(/-/g,"");
           let taiwanDate = Number(parsedate) -19110000;
@@ -104,7 +104,8 @@ export class SignUpComponent implements OnInit {
                 body: JSON.stringify({ambno: this.user.ambno, ambbgndt: "0"+taiwanDate, asrtype: "D2",ambemail: this.user.ambemail, ambaddr: this.user.ambaddr,atktokenid: this.token})
             })
             .then((response)=> {
-              this.router.navigate(["/login"]);
+                appSettings.setString("tokenid", this.token);
+                this.router.navigate(["/login"]);
                 let toast = Toast.makeText("稍後寄出密碼通知");
                 toast.show();
                 this.showLogin = true;
